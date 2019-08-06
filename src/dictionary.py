@@ -8,7 +8,7 @@ import numpy as np
 import urllib.request
 from translate import Translator
 
-resources_path = 'resources/files/'
+resources_path = '../resources/files/'
 
 class TranslatorText():
     def __init__(self, lang):
@@ -36,8 +36,11 @@ class Dictionary(TranslatorText):
 
     def check_in_dictionary(self, word):
         found = False
-        if word in self.dictionary_json:
+        if word in self.dictionary_json and '' != self.dictionary_json[word] and 'usagelimits' not in self.dictionary_json[word]:
             found = True
+        else:
+            print("Translate --> ", self.dictionary_json['word'])
+        found = True
         return found
 
     def load_dictionary(self):
