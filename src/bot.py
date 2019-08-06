@@ -20,10 +20,9 @@ def echo_all(message):
             selected_key = list(d.dictionary_json.keys())[n_key]
             msg = '%s => %s' % (selected_key, d.dictionary_json[selected_key])
         elif '**' in message.text:
-            print("Edita")
-            message.text = message.text.replace('**edit**', '')
+            message.text = message.text.replace('**', '')
             translation = message.text.split('-')
-            d.dictionary_json[translation[0]] = translation[1].lower()
+            d.dictionary_json[translation[0].lower()] = translation[1].lower()
             d.update_dictionary()
             msg = "Updated!"
         else:
