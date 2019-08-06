@@ -10,7 +10,7 @@ from translate import Translator
 
 resources_path = 'resources/files/'
 
-class TranslatorGoogle():
+class TranslatorText():
     def __init__(self, lang):
         self.lang = lang
         self.translator= Translator(to_lang=lang)
@@ -23,7 +23,7 @@ class TranslatorGoogle():
             print("Error translate (translate_text) -> ", str(e))
         return translation
 
-class Dictionary(TranslatorGoogle):
+class Dictionary(TranslatorText):
     def __init__(self, lang):       
         self.name_dictionary = 'dictionary_%s.json' % (lang.lower())
         self.dictionary_json = self.load_dictionary()
