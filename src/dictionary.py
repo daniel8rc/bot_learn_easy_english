@@ -56,9 +56,9 @@ class Dictionary(TranslatorText):
         for word in f_text:
             if not self.check_in_dictionary(word):
                 translation = self.translate_text(word)
-                self.dictionary_json[word] = translation
+                self.dictionary_json[word] = translation.lower()
                 self.update_dictionary()
-                time.sleep(0.2)
+
 
 if __name__ == '__main__':
     d =  Dictionary("Spanish")
