@@ -57,25 +57,8 @@ def send_welcome(message):
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     message.text = message.text.lower()
-    msg = 'err'
-    try:
-        if message.text == 'random':
-            n_key = random.randint(0,len(d.dictionary_json.keys()))
-            selected_key = list(d.dictionary_json.keys())[n_key]
-            msg = '%s => %s' % (selected_key, d.dictionary_json[selected_key])
-        elif '**' in message.text:
-            rows = message.text.split('\n')
-            for row in rows:
-                translation = row.replace('**', '').split('-')
-                d.dictionary_json[translation[0].lower()] = translation[1].lower()
-                d.update_dictionary()
-                msg = "Updated!"
-        else:
-            msg = d.dictionary_json[message.text.lower()]
-    except Exception as e:
-        print("Exception (echo_all) -> ", str(e))
-        pass
-    
-    bot.reply_to(message,msg)
+    m = Messages(message.text)
+    reply_message = m.analyze_message()
+    bot.reply_to(message,reply_message)
 
 bot.polling()
