@@ -1,14 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from translate import Translator
+import urllib.request
+import numpy as np
 import json
 import os
 import time
-import numpy as np
-import urllib.request
-from translate import Translator
+import glob
 
-resources_path = '../resources/files/'
+resources_path = 'resources/files/'
 
 class TranslatorText():
     def __init__(self, lang):
@@ -50,11 +51,25 @@ class Dictionary(TranslatorText):
         return dictionary_json
     
     def load_file_text(self, file_name):
-        f_text = np.loadtxt(fname = resources_path + file_name, dtype='str')
+        """
+        Example with file_name="words_en.txt"
+        """
+        f_text = np.loadtxt(fname=file_name, dtype='str', delimiter="\n")
         return f_text
 
+    def get_files_translations(self):
+        return glob.glob("%stranslations/*.txt" % (resources_path))
+
+    def add_new_translations(self):
+        files = self.get_files_translations()
+        for f in files:
+            f_text = self.load_file_text(f)
+            for translation in f_text:
+                t = translation.split('**')
+                
+
     def add_new_words(self, file_name):
-        f_text = self.load_file_text(file_name)
+        f_text = self.load_file_text(resources_path + file_name)
         print(f_text)
         for word in f_text:
             if not self.check_in_dictionary(word):
@@ -65,5 +80,6 @@ class Dictionary(TranslatorText):
 
 if __name__ == '__main__':
     d =  Dictionary("Spanish")
-    d.add_new_words("words_en.txt")
+    #d.add_new_words("words_en.txt")
+    d.add_new_translations()
 
