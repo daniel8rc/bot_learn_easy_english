@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mysql_bot:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: b0t_t3l3gr4m
+       MYSQL_DATABASE: bot_telegram
+       MYSQL_USER: bot_telegram
+       MYSQL_PASSWORD: b0t_t3l3gr4m
+     networks:
+      vpcbr:
+        ipv4_address: 172.23.0.20
+
+  server_bot:
+    build:
+      context: .
+      dockerfile: DockerfileBot.dev
+    volumes:
+      - .:/opt/bot_telegram
+    command: bash -c "sh install.sh && sleep infinity"
+    ports:
+     - "10000:10000"
+    depends_on:
+      - mysql_bot
+    networks:
+      vpcbr:
+        ipv4_address: 172.23.0.6
+
+volumes:
+  db_data:
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+        - subnet: 172.23.0.0/16
