@@ -21,7 +21,7 @@ class Database():
         db =_mysql.connect(host="localhost",user="joebob",
                   passwd="moonpie",db="thangs")
 
-class GameLetters():
+class LetterGame():
     def __init__(self, game_id):
         self.game_id = game_id
         self.message = ''
@@ -42,7 +42,7 @@ class GameLetters():
         
         self.message = ' '.join(letters_translate)
 
-class Messages(GameLetters):
+class Messages(LetterGame):
     def __init__(self, msg):
         self.msg = msg
         self.reply_message = 'error'
