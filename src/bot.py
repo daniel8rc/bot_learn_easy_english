@@ -78,7 +78,7 @@ class Messages():
 
         except Exception as e:
             print("Exception (analyze_message) -> ", str(e))
-            self.reply_message = 'Error not found word.'
+            self.reply_message = 'Error, not found word.'
             pass
 
         return self.reply_message
