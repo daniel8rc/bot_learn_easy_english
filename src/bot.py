@@ -155,7 +155,6 @@ class LetterGame(Messages):
                 self.stop()
 
     def play(self):
-        print("In play!!")
         if not self.letter_game['selected_word']:
             selected_word = self.get_random_translation()
         else:
@@ -203,4 +202,5 @@ def echo_all(message):
     m.analyze_message()
     m.send_reply(message)
 
-bot.polling()
+if __name__ == '__main__':
+    bot.polling()
