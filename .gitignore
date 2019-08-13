@@ -2,6 +2,7 @@
 */*/migrations/*
 */*/migra*
 */config/*
+learn_bot/learn_bot/config/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
