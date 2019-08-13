@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    path('', include('api_gestor.api.v1.urls',
-                     namespace='api_gestor')),
+    path('', include('telegram_bot.urls',
+                     namespace='telegram_bot')),
     path('admin/', admin.site.urls),
     path('admin/doc/',include('django.contrib.admindocs.urls')),
     path('api-auth/', include('rest_framework.urls'))
