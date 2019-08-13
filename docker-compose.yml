@@ -19,7 +19,7 @@ services:
       dockerfile: DockerfileBot.dev
     volumes:
       - .:/opt/bot_telegram
-    command: bash -c "sh install.sh && sleep infinity"
+    command: bash -c "sh install.sh && ./autoreload python3 src/bot.py"
     ports:
      - "10000:10000"
     depends_on:
