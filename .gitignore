@@ -1,4 +1,6 @@
-autoreload
+# Django
+*/*/migrations/*
+*/*/migra*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
