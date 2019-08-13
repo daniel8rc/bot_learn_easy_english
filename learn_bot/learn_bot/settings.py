@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-from config.settings import (user_mysql, pass_mysql, name_db,host_mysql, port_mysql)
+from config.settings import (user_mysql, pass_mysql, name_db, host_mysql, port_mysql,)
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,16 +38,17 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'telegram_bot',
 )
 
-PROJECT_APPS = (
-    'telegram_bot'
-)
+#PROJECT_APPS = (
+    
+#)
 HELPER_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
 )
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + HELPER_APPS
+INSTALLED_APPS = DJANGO_APPS + HELPER_APPS
 
 
 
@@ -85,7 +86,6 @@ WSGI_APPLICATION = 'learn_bot.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 
 DATABASES = {
     'default': {
@@ -139,3 +139,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
