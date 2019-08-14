@@ -4,7 +4,7 @@ locale-gen "es_ES.UTF-8"
 cd /opt/bot_telegram/learn_bot/ && python3 manage.py makemigrations && python3 manage.py migrate
 
 # Read file conf
-conf_file="/opt/bot_telegram/learn_bot/config/settings.py"
+conf_file="/opt/bot_telegram/learn_bot/learn_bot/config/settings.py"
 {
     while IFS= read -r line; do
     line=${line%%#*}
@@ -39,4 +39,4 @@ User = get_user_model()  # get the currently active user model,
 User.objects.filter(username=$root_username).exists() or \
     User.objects.create_superuser($root_username, $root_email, $root_password)
 EOF
-
+exit 0
