@@ -19,9 +19,9 @@ services:
       dockerfile: DockerfileBot.dev
     volumes:
       - .:/opt/bot_telegram
-    command: bash -c "sh install.sh && cd learn_bot/ && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sh install.sh && cd learn_bot/ && python3 manage.py runserver 0:7000"
     ports:
-     - "10000:8000"
+     - "7000:7000"
     depends_on:
       - mysql_bot
     networks:
