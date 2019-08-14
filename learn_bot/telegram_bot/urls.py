@@ -3,7 +3,8 @@ from . import views
 
 app_name = 'telegram_bot'
 urlpatterns = [
-    r'dictionary/(.*)',
+    re_path(
+        r'dictionary/(.*)',
         views.dictionary,
         name="dictionary"
     ),

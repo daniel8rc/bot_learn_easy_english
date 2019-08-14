@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-from config.settings import (user_mysql, pass_mysql, name_db, host_mysql, port_mysql,)
+from learn_bot.config.settings import (user_mysql, pass_mysql, name_db, host_mysql, port_mysql,)
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +25,7 @@ SECRET_KEY = 'g+di1!ezx$r26^9t0+z$_2l&k!42&r6=^z(e7dn(jld6md7jfk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
