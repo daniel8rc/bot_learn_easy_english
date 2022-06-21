@@ -1,2 +1,2 @@
 googletrans==2.4.0
-numpy==1.17.0
+numpy==1.22.0
